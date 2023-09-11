@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <span></span>
+        <button onclick="f_gatcha(5)">1팩</button>
+        <button onclick="f_gatcha(50)">1통</button>
+    </div>
+    <div class="result">
+
+    </div>
+
+    <script>
+        let set_name = '';
+        let card_sets;
+        let v_url = location.href;
+        if (v_url.indexOf('?') != -1) {
+            let v_queryString = v_url.split('?')[1];
+
+            let v_prams = v_queryString.split('&');
+
+            for (let i = 0; i < v_prams[0].split('=')[1].split('%20').length; i++) {
+                set_name += v_prams[0].split('=')[1].split('%20')[i] + " ";
+            }
+            
+            console.log(v_prams[1].split('=')[1]);
+            card_sets = v_prams[1].split('=')[1].split("%20");
+        }
+        document.querySelector('span').innerHTML = set_name;
+        const v_result = document.querySelector('.result');
+
+        function f_gatcha(pn){
+            v_result.innerHTML = '';
+            for (let i = 0; i < pn; i++) {
+                let v_img = document.createElement('img');
+                let idx = Math.floor(Math.random() * card_sets.length);
+                v_img.src = card_sets[idx];
+                v_img.width =100;
+                v_result.appendChild(v_img);
+            }
+        }
+    </script>
+</body>
+
+</html>

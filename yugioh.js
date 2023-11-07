@@ -112,7 +112,7 @@ function f_slot(p_src, p_id) {
                         f_appendCard(event, 2);
                     } else {
                         f_appendCard(event, 1);
-                        v_deck.children[8].innerHTML = '';
+                        v_deck.children[5].innerHTML = '';
                     }
                 }
             }
@@ -252,7 +252,7 @@ function f_info(p_id) {
 }
 
 function f_five() {
-    v_deck.children[8].innerHTML = '';
+    v_deck.children[5].innerHTML = '';
     shuffleDeck = [];
     let idx, len;
     for (let i = 1; i < v_deck.children[1].childElementCount; i++) {
@@ -281,12 +281,12 @@ function f_five() {
                 f_info(event.target.id);
             }
         });
-        v_deck.children[8].appendChild(v_img);
+        v_deck.children[5].appendChild(v_img);
     }
 }
 
 function f_draw() {
-    if (v_deck.children[8].childElementCount < v_deck.children[1].childElementCount - 1) {
+    if (v_deck.children[5].childElementCount < v_deck.children[1].childElementCount - 1) {
         let v_img = document.createElement('img');
         let shffle_idx = shuffleDeck.pop();
         v_img.id = v_deck.children[1].children[shffle_idx].id;
@@ -301,8 +301,8 @@ function f_draw() {
                 f_info(event.target.id);
             }
         });
-        v_deck.children[8].appendChild(v_img);
-        v_deck.children[8].scrollTop = v_deck.children[8].scrollHeight;
+        v_deck.children[5].appendChild(v_img);
+        v_deck.children[5].scrollTop = v_deck.children[5].scrollHeight;
     }
 }
 
@@ -312,7 +312,7 @@ function f_reset() {
     v_deck.children[1].innerHTML = "<p>메인 덱</p>";
     v_deck.children[2].innerHTML = "<p>엑스트라 덱</p>";
     v_deck.children[3].innerHTML = "<p>사이드 덱</p>";
-    v_deck.children[8].innerHTML = '';
+    v_deck.children[5].innerHTML = '';
     tmpDeck = { 1: [], 2: [], 3: [] };
 }
 
@@ -370,8 +370,8 @@ function f_save() {
         v_div.appendChild(v_img);
         v_div.appendChild(v_p);
         v_div.classList.add("decks");
-        v_deck.children[9].appendChild(v_div);
-        v_deck.children[9].scrollTop = v_deck.children[9].scrollHeight;
+        v_deck.children[6].appendChild(v_div);
+        v_deck.children[6].scrollTop = v_deck.children[6].scrollHeight;
         decks.push({ "deckId": decks.length > 0 ? decks[decks.length]["deckId"]+1 : 1,
             "deckName": deckName, "deckCategory": v_deck.children[0].children[1].value, "deck": tmpDeck })
         //localStorage.setItem("decks", decks);

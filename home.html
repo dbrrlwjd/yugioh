@@ -28,8 +28,8 @@
             width: 510px;
         }
 
-        .info{
-            overflow-y: scroll;
+        .scroll{
+            overflow-y: auto;
         }
 
         .search input {
@@ -41,7 +41,7 @@
             width: 100%;
             height: 98%;
             border: 1px solid black;
-            overflow-y: scroll;
+            overflow-y: auto;
         }
 
         #loading {
@@ -92,14 +92,18 @@
         .decks p{
             text-align: center;
         }
+
+        .hidden{
+            display: none;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <div>
-            <div class="info">
-
+            <div class="info scroll">
+                
             </div>
         </div>
 
@@ -114,24 +118,33 @@
         </div>
 
         <div class="deck">
-            <input style="width: 98%;" type="text" placeholder="덱 이름">
+            <div>
+                <input style="width: 48%;" type="text" placeholder="덱 이름">
+                <input style="width: 48%;" type="text" placeholder="덱 타입">
+            </div>
+            
             <div>
                 <p>메인 덱</p>
             </div>
+
             <div>
                 <p>엑스트라 덱</p>
             </div>
+
             <div>
                 <p>사이드 덱</p>
             </div>
+
             <button onclick="f_five()">5장 뽑기</button>
             <button onclick="f_draw()">드로우</button>
             <button onclick="f_reset()">리셋</button>
             <button onclick="f_save()">저장</button>
-            <div>
+
+            <div class="scroll" style="height: 142px;">
 
             </div>
-            <div>
+
+            <div class="scroll" style="height: 442px;">
 
             </div>
         </div>

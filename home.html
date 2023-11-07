@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+ 
     <style>
         .container {
             width: 1250px;
@@ -14,6 +15,7 @@
             transform: translate(-50%, 0);
 
             display: flex;
+            border: 0;
         }
 
         .container>div:nth-child(1) {
@@ -96,6 +98,16 @@
         .hidden{
             display: none;
         }
+
+        #ii{
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        #is{
+            display: flex;
+            justify-content: space-evenly;
+        }
     </style>
 </head>
 
@@ -108,9 +120,9 @@
         </div>
 
         <div class="search">
-            <div>
+            <div id="is">
                 <input id="inputSearch" type="text" onkeydown="f_enter()">
-                <button onclick="f_search()">검색</button>
+                <button onclick="f_search()" class="btn btn-outline-danger">검색</button>
             </div>
             <div id="result">
 
@@ -118,9 +130,9 @@
         </div>
 
         <div class="deck">
-            <div>
-                <input style="width: 48%;" type="text" placeholder="덱 이름">
-                <input style="width: 48%;" type="text" placeholder="덱 타입">
+            <div id="ii">
+                <input style="width: 47%;" type="text" placeholder="덱 이름">
+                <input style="width: 47%;" type="text" placeholder="덱 타입">
             </div>
             
             <div>
@@ -135,10 +147,12 @@
                 <p>사이드 덱</p>
             </div>
 
-            <button onclick="f_five()">5장 뽑기</button>
-            <button onclick="f_draw()">드로우</button>
-            <button onclick="f_reset()">리셋</button>
-            <button onclick="f_save()">저장</button>
+            <div>
+                <button onclick="f_five()" class="btn btn-outline-danger">5장 뽑기</button>
+                <button onclick="f_draw()" class="btn btn-outline-danger">드로우</button>
+                <button onclick="f_reset()" class="btn btn-outline-danger">리셋</button>
+                <button onclick="f_save()" class="btn btn-outline-danger">저장</button>
+            </div>            
 
             <div class="scroll" style="height: 142px;">
 
@@ -156,6 +170,8 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
     <script src="./yugioh.js"></script>
     <script>
         v_result.addEventListener('contextmenu', () => {
@@ -167,6 +183,5 @@
             event.stopPropagation();
         });
     </script>
-</body>
-
+</body>    
 </html>

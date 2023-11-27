@@ -5,16 +5,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <style>
+        body{
+            background-color:aliceblue;
+        }
+        .container {
+            width: 1250px;
+            height: 1600px;
+            margin-left: 50%;
+            transform: translate(-50%, 0);
+            background-color: white;
+            border: 0;
+        }
+
+        .container>div {
+            border: 1px solid black;
+        }
+
+        .container>div:nth-child(1) {
+            background-color: #d35f00;
+            padding: 5px;
+        }
+
+        .container>div:nth-child(1)>* {
+            margin-left: 10px;
+        }
+
+        .result{
+            height: 950px;
+            padding: 12px;
+        }
+
+        .card {
+            position:relative;
+            display: inline-block;
+            width: 120px;
+            height: 180px;
+            perspective: 1100px;
+            transition: .4s;
+            transform-style: preserve-3d;
+        }
+
+        .front,
+        .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .front{
+            transform: rotateY(180deg);
+        }
+
+        .back {
+            /* transform: rotateY(180deg); */
+        }
+
+        .flip {
+            transform: rotateY(180deg);
+        }
+    </style>
 </head>
 
 <body>
-    <div>
-        <span></span>
-        <button onclick="f_gatcha(5)">1팩</button>
-        <button onclick="f_gatcha(50)">1통</button>
-    </div>
-    <div class="result">
-
+    <div class="container">
+        <div>
+            <span></span>
+            <button onclick="f_gatcha(5)" class="btn btn-outline-warning">1팩</button>
+            <button onclick="f_gatcha(50)" class="btn btn-outline-warning">1통</button>
+            <button onclick="f_reverse()" class="btn btn-outline-warning">전부 뒤집기</button>
+        </div>
+        <div class="result">
+    
+        </div>
     </div>
 
     <script>
@@ -29,21 +95,41 @@
             for (let i = 0; i < v_prams[0].split('=')[1].split('%20').length; i++) {
                 set_name += v_prams[0].split('=')[1].split('%20')[i] + " ";
             }
-            
+
             console.log(v_prams[1].split('=')[1]);
             card_sets = v_prams[1].split('=')[1].split("%20");
         }
         document.querySelector('span').innerHTML = set_name;
         const v_result = document.querySelector('.result');
 
-        function f_gatcha(pn){
+        function f_gatcha(pn) {
             v_result.innerHTML = '';
             for (let i = 0; i < pn; i++) {
-                let v_img = document.createElement('img');
+                let v_card = document.createElement('div');
+                let v_front = document.createElement('img');
+                let v_back = document.createElement('img');
+
                 let idx = Math.floor(Math.random() * card_sets.length);
-                v_img.src = card_sets[idx];
-                v_img.width =100;
-                v_result.appendChild(v_img);
+                v_front.src = card_sets[idx];
+                v_front.classList.add('front');
+
+                v_back.src = "./resources/552E46D7356720000F.jpeg";
+                v_back.classList.add('back');
+
+                v_card.addEventListener("click", () => {
+                    v_card.classList.add('flip');
+                });
+                v_card.appendChild(v_front);
+                v_card.appendChild(v_back);
+                v_card.classList.add('card');
+
+                v_result.appendChild(v_card);
+            }
+        }
+
+        function f_reverse(){
+            for (let i = 0; i < v_result.childElementCount; i++) {
+                v_result.children[i].classList.add('flip');
             }
         }
     </script>

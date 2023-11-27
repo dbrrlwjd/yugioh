@@ -68,7 +68,7 @@ v_ajax.onload = function () {
     console.log(cardData);
     console.log(banlist_info);
     console.log(card_sets);
-    //decks = localStorage.getItem("decks");
+    decks = localStorage.getItem("decks");
     v_loading.style.display = 'none';
 }
 v_ajax.send();
@@ -373,8 +373,8 @@ function f_save() {
         v_deck.children[6].appendChild(v_div);
         v_deck.children[6].scrollTop = v_deck.children[6].scrollHeight;
         decks.push({ "deckId": decks.length > 0 ? decks[decks.length]["deckId"]+1 : 1,
-            "deckName": deckName, "deckCategory": v_deck.children[0].children[1].value, "deck": tmpDeck })
-        //localStorage.setItem("decks", decks);
+            "deckName": deckName, "deckCategory": v_deck.children[0].children[1].value, "deck": tmpDeck });
+        localStorage.setItem("decks", decks);
     }
 }
 

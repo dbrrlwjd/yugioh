@@ -318,7 +318,7 @@ function f_reset() {
 
 function f_save() {
     let deckName = v_deck.children[0].children[0].value;
-
+    console.log(decks);
     for (let k = 0; k < decks.length; k++) {
         if (decks[k]["deckName"] == deckName) {
             decks.slice(k,1);

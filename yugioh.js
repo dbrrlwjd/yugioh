@@ -68,7 +68,9 @@ v_ajax.onload = function () {
     console.log(cardData);
     console.log(banlist_info);
     console.log(card_sets);
-    decks = localStorage.getItem("decks");
+    if(localStorage.getItem("decks") != null){
+        decks = localStorage.getItem("decks");
+    }    
     v_loading.style.display = 'none';
 }
 v_ajax.send();
